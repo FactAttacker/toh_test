@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+<form id="fileForm">
+  <div>
+    <input type="text" value="hong" name="sender" id="sender">
+  </div>
+  <div>
+    <input type="file" id="file_1" multiple>
+    <img id="preview" src="" alt="로컬에 있는 이미지가 보여지는 영역">
+  </div>
+  <div>
+    <button type="submit">전송</button>
+  </div>
+</form>
+<img src="" id="image">
+<script>
+  $(document).ready(function() {
+    $('#fileForm').on('submit', function(e) {
+      console.log('upload');
+
+      var formData = new FormData();
+      console.log($("#file_1")[0].files);
+      formData.append('sender', $('#sender').val());
+      formData.append('file', $("#file_1")[0].files[0], $("#file_1")[0].files[0].name);
+
+      $.ajax({
+        url: 'http://www.javabrain.kr:8080/api/imageUpload',
+        type: 'post',
+        processData: true,
+        contentType: false,
+        data: formData,
+        success: function(data){
+          console.log(data);
+          $('#image').attr('src', 'http://www.javabrain.kr' + data.value);
+        }
+      });
+
+      return false;
+    });
+  });
+
+  // 로컬 이미지 읽어서 썸네일 보여주기
+  var file = document.querySelector('#file_1');
+  file.onchange = function () {
+
+    var fileList = file.files ;
+    console.log(file.files);
+
+    // 읽기
+    var reader = new FileReader();
+    reader.readAsDataURL(fileList [0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+      document.querySelector('#preview').src = reader.result ;
+    };
+  };
+</script>
+</body>
+</html>

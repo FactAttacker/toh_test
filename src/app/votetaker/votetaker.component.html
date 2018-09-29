@@ -1,0 +1,6 @@
+<h3>Agree: {{agreed}}, Disagree: {{disagreed}}</h3>
+
+<app-voter *ngFor="let voter of voters" [name] = "voter"
+           (voted)="onVoted($event)">
+<!-- (voted) 가 자식이 보내준 이벤트를 받기위한 바인딩 -->
+</app-voter>
