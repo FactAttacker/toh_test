@@ -32,7 +32,7 @@ export class HeroService {
     //return of(h);
 
     //template string 문법 `${변수}`
-    return this.http.get<Hero>(`${environment.HOST}/api/heroes/${hero_id}`);
+    return this.http.get<Hero>(`${environment.HOST}/api/hero/${hero_id}`);
     //return of(HEROES.find(hero => hero.hero_id === hero_id));
   }
 
