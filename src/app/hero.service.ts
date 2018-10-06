@@ -5,6 +5,8 @@ import {Observable, of, Subject} from 'rxjs';
 import {delay} from 'rxjs/operators';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../environments/environment.prod";
+import {TodoVo} from "./domain/todo.vo";
+import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
 // 1. (root 컴포넌트가 만들어질때) 해당 서비스를 컨테이너에 등록
 @Injectable({
@@ -34,6 +36,11 @@ export class HeroService {
     //template string 문법 `${변수}`
     return this.http.get<Hero>(`${environment.HOST}/api/hero/${hero_id}`);
     //return of(HEROES.find(hero => hero.hero_id === hero_id));
+  }
+
+
+  getTodoList(): Observable<TodoVo[]>{
+    return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo/`);
   }
 
 }
