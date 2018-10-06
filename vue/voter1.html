@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<div id="app">
+  <h2>{{name}}: {{ result }}</h2>
+  <button v-on:click="agree">Agree</button>
+  <button @click="disagree">DisAgree</button>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</body>
+</html>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data:{
+      name :'do hyun',
+      result: null
+    },
+    methods:{
+      agree:function(){
+        this.result = 'agree';
+      },
+      disagree:function(){
+        this.result = 'disagree';
+      }
+    }
+  });
+</script>
