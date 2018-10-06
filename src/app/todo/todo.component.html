@@ -24,7 +24,7 @@
   </tr>
   </thead>
   <tbody>
-  <ng-template ngFor let-todo  [ngForOf]="todoList">
+  <ng-template ngFor let-todo  [ngForOf]="todoList" let-idx="index">
     <!-- 수정 템플릿 -->
     <tr *ngIf="todo.isEdited">
       <td>
@@ -48,7 +48,7 @@
       <td>{{todo.updated}}</td>
       <td>
         <button class="btn btn-success btn-sm" (click)="save(todo)">수정</button>
-        <button class="btn btn-danger btn-sm ml-1">삭제</button>
+        <button class="btn btn-danger btn-sm ml-1" (click)="remove(todo,idx)">삭제</button>
       </td>
     </tr>
   </ng-template>
