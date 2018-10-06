@@ -1,13 +1,19 @@
-<div class="row">
-  <div class="col-sm-8">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="할일을 입력하세요." id="input_todo">
+<form #myForm="ngForm" (Submit)="add_todo()">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo"
+               name="todo" #todo="ngModel" required>
+        <div [hidden]="todo.valid" class="alert alert-danger">
+          todo is required
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
     </div>
   </div>
-  <div class="col-sm-4">
-    <button class="btn btn-primary btn-block" (click)="add_todo()">추가</button>
-  </div>
-</div>
+</form>
 
 <table class="table table-striped">
   <thead>

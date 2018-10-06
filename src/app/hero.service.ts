@@ -43,11 +43,17 @@ export class HeroService {
     return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo/`);
   }
 
-  addTodo(todo:TodoVo){
+  addTodo(todo:TodoVo): Observable<TodoVo>{
     const headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
 
-    return this.http.post(`${environment.HOST}/api/todo/`,todo,{headers:headers});
+    // isFinished 속성이 boolean타입이기 때문에 명시적으로 속성값을 제거
+    const tempTodo = {...todo}; // ...todo는 새로운 메모리 주소로 넣는다.
+    delete tempTodo.isFinished;
+
+    return this.http.post<TodoVo>(`${environment.HOST}/api/todo/`,todo,{headers:headers});
   }
+
+
 
 }

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {HeroService} from '../hero.service';
 
 import * as $ from 'jquery';
+import {TodoVo} from "../domain/todo.vo";
+import {HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {environment} from "../../environments/environment.prod";
 
 @Component({
   selector: 'app-jquery',
@@ -9,7 +13,7 @@ import * as $ from 'jquery';
   styleUrls: ['./jquery.component.scss']
 })
 export class JqueryComponent implements OnInit {
-  todoList;
+  todoList
 
   constructor(private heroService: HeroService) {
   }
@@ -82,5 +86,8 @@ export class JqueryComponent implements OnInit {
       }
     });
   }
+
+
+
 
 }
