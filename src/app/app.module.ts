@@ -15,6 +15,7 @@ import { JqueryComponent } from './jquery/jquery.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HighlightDirective } from './highlight.directive';
 import { MydatePipe } from './mydate.pipe';
+import {ToasterModule} from "angular2-toaster";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -45,6 +46,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    ToasterModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

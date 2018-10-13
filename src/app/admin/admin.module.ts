@@ -6,6 +6,7 @@ import { ManageHeroComponent } from './manage-hero/manage-hero.component';
 import {RouterModule, Routes} from "@angular/router";
 import {RegisterHeroComponent} from "./register-hero/register-hero.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AdminService} from "./admin.service";
 
 const routes: Routes = [
     {path: '', component: IndexComponent, children: [
@@ -26,6 +27,9 @@ const routes: Routes = [
     DashboardComponent,
     RegisterHeroComponent,
     ManageHeroComponent
+  ],
+  providers : [
+    AdminService
   ]
 })
 export class AdminModule { }
