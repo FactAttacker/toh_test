@@ -16,6 +16,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { HighlightDirective } from './highlight.directive';
 import { MydatePipe } from './mydate.pipe';
 import {ToasterModule} from "angular2-toaster";
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
     ]},
   {path: 'todo', component: TodoComponent},
   {path: 'jquery', component: JqueryComponent},
-  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'}
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
@@ -38,7 +40,8 @@ const routes: Routes = [
     TodoComponent,
     JqueryComponent,
     HighlightDirective,
-    MydatePipe
+    MydatePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
