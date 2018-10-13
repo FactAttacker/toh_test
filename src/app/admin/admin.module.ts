@@ -5,18 +5,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageHeroComponent } from './manage-hero/manage-hero.component';
 import {RouterModule, Routes} from "@angular/router";
 import {RegisterHeroComponent} from "./register-hero/register-hero.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
     {path: '', component: IndexComponent, children: [
         {path: 'register', component: RegisterHeroComponent},
         {path: 'manage'  , component: ManageHeroComponent},
-        {path: ''        , component: DashboardComponent}
+        {path: ''        , redirectTo: '/admin/register'}
     ]}
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
