@@ -41,11 +41,11 @@
       </td>
     </tr>
     <!-- 일반 템플릿 -->
-    <tr *ngIf="!todo.isEdited">
+    <tr *ngIf="!todo.isEdited" [@flyInOut]="'in'" appHighlight [highlightColor]="'#b8d6fb'">
       <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
       <td>{{todo.todo}}</td>
-      <td>{{todo.created}}</td>
-      <td>{{todo.updated}}</td>
+      <td>{{todo.created | mydate}}</td>
+      <td>{{todo.updated | date : 'yyyy/MM/dd a HH:mm:ss'}}</td>
       <td>
         <button class="btn btn-success btn-sm" (click)="save(todo)">수정</button>
         <button class="btn btn-danger btn-sm ml-1" (click)="remove(todo,idx)">삭제</button>

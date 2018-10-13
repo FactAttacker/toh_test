@@ -12,6 +12,9 @@ import { TodoComponent } from './todo/todo.component';
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from "@angular/common/http";
 import { JqueryComponent } from './jquery/jquery.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { HighlightDirective } from './highlight.directive';
+import { MydatePipe } from './mydate.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,10 +34,13 @@ const routes: Routes = [
     VoterComponent,
     HomeComponent,
     TodoComponent,
-    JqueryComponent
+    JqueryComponent,
+    HighlightDirective,
+    MydatePipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
